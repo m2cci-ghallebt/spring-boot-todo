@@ -7,17 +7,28 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 @Service
 public class UserService {
 
   @Autowired
   private UserRepository userRepository;
 
+  private static final Logger logger = LoggerFactory.getLogger(UserService.class);
+
   public User register(User user) {
+    logger.debug("Tentative d'enregistrement de l'utilisateur : {}", user.getUsername());
     if (userRepository.findByUsername(user.getUsername()).isPresent()) {
       throw new IllegalArgumentException("Utilisateur Existe deja");
     }
-    return userRepository.save(user);
+    User savedUser = userRepository.save(user);
+    logger.info(
+        "--------------------------------------------------------------------------------------------Utilisateur enregistré avec succès : {}",
+        savedUser.getUsername());
+    return savedUser;
+    // return userRepository.save(user);
   }
 
   public Optional<User> findUserById(Long id) {

@@ -1,0 +1,27 @@
+2024-11-03T14:09:58.886+01:00 ERROR 11080 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to bind properties under 'logging.level.com.example.demo' to org.springframework.boot.logging.LogLevel:
+
+    Property: logging.level.com.example.demo
+    Value: "DEBUG  # Ajuste le package selon ton code"
+    Origin: class path resource [application.properties] - 12:32
+    Reason: failed to convert java.lang.String to org.springframework.boot.logging.LogLevel (caused by java.lang.IllegalArgumentException: No enum constant org.springframework.boot.logging.LogLevel.DEBUG  # Ajuste le package selon ton code)
+
+Action:
+
+Update your application's configuration. The following values are valid:
+
+    DEBUG
+    ERROR
+    FATAL
+    INFO
+    OFF
+    TRACE
+    WARN
+
