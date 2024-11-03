@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
-// import java.util.ArrayList;
 import java.util.Optional;
-// import org.slf4j.Logger;
-// import org.slf4j.LoggerFactory;
 
 @RestController
 @RequestMapping("/todos")
@@ -18,12 +15,9 @@ public class TodoController {
   @Autowired
   private TodoRepository todoRepository;
 
-  // private List<Todo> todoList = new ArrayList<>();
-
   @GetMapping
   public List<Todo> getAllTodos() {
     return todoRepository.findAll();
-    // return todoList;
   }
 
   @GetMapping("/{id}")
@@ -32,17 +26,8 @@ public class TodoController {
     return todo.map(ResponseEntity::ok).orElse((ResponseEntity.notFound().build()));
   }
 
-  // private static final Logger logger =
-  // LoggerFactory.getLogger(TodoController.class);
-
-  // private long nextId = 1;
-
   @PostMapping
   public Todo createTodo(@RequestBody Todo todo) {
-    // todo.setId((long) (nextId++));
-    // todoList.add(todo);
-    // logger.info("New Todo created: {}", todo);
-    // return todo;
     return todoRepository.save(todo);
   }
 
